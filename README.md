@@ -6,11 +6,7 @@ Setting up a mobile testing environment is not a trivial task when your first MA
 
 This playbook shows a few ways to configure a mobile testing environment from scratch in compliance with the Bishop Fox’s standards and tools. Choose the best option depending on your resources and requirements.
 
-{% note %}
-
 💡 **Note:** The setup options that include WSL are highly recommended since they require less steps and could save you some time
-
-{% endnote %}
 
 # Basic requirements
 
