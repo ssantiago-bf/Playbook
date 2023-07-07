@@ -1,4 +1,4 @@
-# Mobile Application Assessment (MAA) Virtual Testing Environment Setup
+# Mobile Application Assessment (MAA) - Virtual Testing Environment Setup
 
 # Introduction
 
