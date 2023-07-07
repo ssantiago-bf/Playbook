@@ -183,15 +183,9 @@ This setup is simpler since we will use the Kali box only to route the network t
 
 In this setup option we will have three main components: the Corellium instance, our local Windows host and a WSL distribution. The Corellium instance will host an iOS device that contains the target application and the Frida server. In the local Windows we will be running the Burp proxy to intercept the application’s traffic and WSL to execute the Frida client and Objection. We will also establish an SSH dynamic tunnel in WSL to the Kali box. The Kali box will route all the traffic to the target’s backend in the Internet.
 
-<aside>
-💡 **Note:** For this setup, WSL should be configured as version 1. WSL 1 will allow us to interact with the native Windows network interfaces from our Linux distribution
+>💡 **Note:** For this setup, WSL should be configured as version 1. WSL 1 will allow us to interact with the native Windows network interfaces from our Linux distribution
 
-</aside>
-
-<aside>
-💡 **Note:** Ubuntu 20.04.5 LTS is strongly recommended as WSL distribution
-
-</aside>
+>💡 **Note:** Ubuntu 20.04.5 LTS is strongly recommended as WSL distribution
 
 ### Configuration Steps
 
@@ -469,10 +463,7 @@ While the virtual device is being created we can start configuring our proxy
     adb.exe shell "settings put global http_proxy 192.168.174.2:8082"
     ```
     
-    <aside>
-    💡 **Note:** You can disable the proxy using the following command: `adb.exe shell settings put global http_proxy :0`. You can also check the status of the proxy with `adb.exe shell settings get global http_proxy`
-    
-    </aside>
+    >💡 **Note:** You can disable the proxy using the following command: `adb.exe shell settings put global http_proxy :0`. You can also check the status of the proxy with `adb.exe shell settings get global http_proxy`
     
 
 At this point we have configured Burp and the device proxy. You can test it by browsing `wikipedia.org` in the default WebView Browser and intercepting the traffic in Burp. Now we have to configure Frida and the Kali box. We also need to create a second SSH tunnel to communicate our Kali box with the Frida server
@@ -569,10 +560,7 @@ At this point we have configured Burp and the device proxy. You can test it by b
 
 If the target application is only available for ARM architecture we will need to install the ARM translation libraries since the Genymotion devices’ architecture is x86 and x86_64
 
-<aside>
-💡 **Note:** At the time this playbook is written, the latest Android version supported by the translation libraries is Android 9 - API 28
-
-</aside>
+>💡 **Note:** At the time this playbook is written, the latest Android version supported by the translation libraries is Android 9 - API 28
 
 1. Go to [https://github.com/m9rco/Genymotion_ARM_Translation](https://github.com/m9rco/Genymotion_ARM_Translation) and download the package corresponding to your device Android version
     
@@ -590,10 +578,7 @@ If the target application is only available for ARM architecture we will need to
 
 Another useful feature in Genymotion is OpenGAPPs to enable the Google services in the virtual device. This will allow you to sign in to Google accounts, install applications from Play Store, etc.
 
-<aside>
-💡 **Note:** OpenGAPPs must be installed after the ARM translation tools
-
-</aside>
+>💡 **Note:** OpenGAPPs must be installed after the ARM translation tools
 
 1. In the Genymotion device window click on the *********OpenGAPPs********* button
     
@@ -613,15 +598,9 @@ This setup is simpler since we will use the Kali box only to route the network t
 
 In this setup option we will have three main components: our local Windows host, a WSL distribution and the Kali box. Genymotion, Burp and WSL will be running in our local Windows. An Android VM will be created with Genymotion that will host the target application and the Frida server necessary for some actions such as bypassing SSL pinning and extracting the memory dump. Burp Suite proxy will intercept the application’s traffic and an SSH tunnel will be established to the Kali box using WSL. Frida client and Objection will be executed from WSL as well. Finally, the Kali box will route all the traffic to the target’s backend in the Internet.
 
-<aside>
-💡 **Note:** For this setup, WSL should be configured as version 1. WSL 1 will allow us to interact with the native Windows network interfaces from our Linux distribution
+>💡 **Note:** For this setup, WSL should be configured as version 1. WSL 1 will allow us to interact with the native Windows network interfaces from our Linux distribution
 
-</aside>
-
-<aside>
-💡 **Note:** Ubuntu 20.04.5 LTS is strongly recommended as WSL distribution
-
-</aside>
+>💡 **Note:** Ubuntu 20.04.5 LTS is strongly recommended as WSL distribution
 
 ### Configuration Steps
 
@@ -779,10 +758,7 @@ While the virtual device is being created we can start configuring our proxy
     $ adb shell "settings put global http_proxy 192.168.174.2:8082"
     ```
     
-    <aside>
-    💡 **Note:** You can disable the proxy using the following command: `adb shell settings put global http_proxy :0`. You can also check the status of the proxy with `adb shell settings get global http_proxy`
-    
-    </aside>
+    >💡 **Note:** You can disable the proxy using the following command: `adb shell settings put global http_proxy :0`. You can also check the status of the proxy with `adb shell settings get global http_proxy`
     
 
 At this point we have configured Burp and the device proxy. You can test it by browsing `wikipedia.org` in the default WebView Browser and intercepting the traffic in Burp. Now we have to configure Frida and Objection to communicate to the Android device
@@ -871,10 +847,7 @@ At this point we have configured Burp and the device proxy. You can test it by b
 
 If the target application is only available for ARM architecture we will need to install the ARM translation libraries since the Genymotion devices’ architecture is x86 and x86_64
 
-<aside>
-💡 **Note:** At the time this playbook is written, the latest Android version supported by the translation libraries is Android 9 - API 28
-
-</aside>
+>💡 **Note:** At the time this playbook is written, the latest Android version supported by the translation libraries is Android 9 - API 28
 
 1. Go to [https://github.com/m9rco/Genymotion_ARM_Translation](https://github.com/m9rco/Genymotion_ARM_Translation) and download the package corresponding to your device Android version
     
@@ -892,10 +865,7 @@ If the target application is only available for ARM architecture we will need to
 
 Another useful feature in Genymotion is OpenGAPPs to enable the Google services in the virtual device. This will allow you to sign in to Google accounts, install applications from Play Store, etc.
 
-<aside>
-💡 **Note:** OpenGAPPs must be installed after the ARM translation tools
-
-</aside>
+>💡 **Note:** OpenGAPPs must be installed after the ARM translation tools
 
 1. In the Genymotion device window click on the *********OpenGAPPs********* button
     
