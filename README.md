@@ -43,20 +43,20 @@ Two main connection types will be used: Corellium VPN between the iOS device and
 Corellium will take a few minutes to complete the creation of the new device. Meanwhile we can start configuring our proxy
 
 1. Create/open a typical Burp project
-2. Create new proxy listener for the iOS device. In the Burp *Proxy* tab click on *Proxy Settings > Proxy Listeners > Add* and add the following listener:
+2. Create new proxy listener for the iOS device. In the Burp ***Proxy*** tab click on ***Proxy Settings > Proxy Listeners > Add*** and add the following listener:
     - `Bind port: 8082`
     - Mark the `All interfaces` check box
     
     ![2.png](images/2.png)
     
-3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp *Settings* window click on *Network > Connections > SOCKS proxy* and add the following proxy:
+3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp ***Settings*** window click on ***Network > Connections > SOCKS proxy*** and add the following proxy:
     - `SOCKS proxy host: 127.0.0.1`
     - `SOCKS proxy port: 9090`
     - Mark the `Use SOCKS proxy` check box
     
     ![2.png](images/2%201.png)
     
-4. Open MobaXterm and create a new SSH tunnel for the Burp traffic in the Kali box. Click on *Tunneling > New SSH tunnel > Dynamic Port Forwarding (SOCKS Proxy)* and set the following parameters:
+4. Open MobaXterm and create a new SSH tunnel for the Burp traffic in the Kali box. Click on ***Tunneling > New SSH tunnel > Dynamic Port Forwarding (SOCKS Proxy)*** and set the following parameters:
     - `Forwarded port: 9090`
     - `SSH server: <Your Kali box address>.bf.run`
     - `SSH login: kali`
@@ -65,11 +65,11 @@ Corellium will take a few minutes to complete the creation of the new device. Me
     ![3.png](images/3.png)
     
 5. Save and start the tunnel
-6. Once the iOS device is created and running. Go to the Corellium ********Connect******** section and download the *****OVPN file*****
+6. Once the iOS device is created and running. Go to the Corellium ***Connect*** section and download the ***OVPN file***
     
     ![4.png](images/4.png)
     
-7. Import the *****OVPN file***** in OpenVPN and connect to the Corellium VPN profile
+7. Import the ***OVPN file*** in OpenVPN and connect to the Corellium VPN profile
     
     ![5.png](images/5.png)
     
@@ -77,7 +77,7 @@ Corellium will take a few minutes to complete the creation of the new device. Me
     
     ![6.png](images/6.png)
     
-9. In the iOS device go to ********************Settings > Wi-Fi >******************** tap on **i** icon of the Corellium network ***********> Configure > Proxy > Manual*********** and set the following parameters:
+9. In the iOS device go to ***Settings > Wi-Fi >*** tap on ***i*** icon of the Corellium network ***> Configure > Proxy > Manual*** and set the following parameters:
     - `Server: <IP address obtained in step 9>`
     - `Port: 8082`
     
@@ -85,32 +85,32 @@ Corellium will take a few minutes to complete the creation of the new device. Me
     
     ![8.png](images/8.png)
     
-10. Open the Safari browser in the iOS device and go to `http://burp`. Then tap on **********************CA Certificate > Allow**********************
+10. Open the Safari browser in the iOS device and go to `http://burp`. Then tap on ***CA Certificate > Allow***
     
     ![9.png](images/9.png)
     
-11. Go to ********************************************************************************Settings > Profile Downloaded > PortSwigger CA > Install > Install > Install > Done********************************************************************************
+11. Go to ***Settings > Profile Downloaded > PortSwigger CA > Install > Install > Install > Done***
     
     ![10.png](images/10.png)
     
-12. Go to *Settings > General > About > Certificate Trust Settings > Enable PortSwiggerCA*. Now, the iOS device has internet access and the proxy configured
+12. Go to ***Settings > General > About > Certificate Trust Settings > Enable PortSwiggerCA***. Now, the iOS device has internet access and the proxy configured
     
     ![11.png](images/11.png)
     
 
 At this point we have configured Burp and the device proxy. You can test it by browsing `wikipedia.org` in Safari and intercepting the traffic in Burp. Now we have to configure Frida and the Kali box. By default, a Frida server is running in the port 27042 of the iOS device. However, we need to create a port forwarding entry in the Corellium’s console to enable network access. We also need to create a second SSH tunnel to communicate our Kali box with the Frida server
 
-1. In Corellium go to *Port Forwarding > Add Port* and create the following entry:
+1. In Corellium go to ***Port Forwarding > Add Port*** and create the following entry:
     - `Device port: 27042`
     - `Router port: 27042`
     
     ![12.png](images/12.png)
     
-2. Grab the IP address of your iOS device in the Corellium ***************Connect > IP Connectiviy > Services IP*************** section
+2. Grab the IP address of your iOS device in the Corellium ***Connect > IP Connectiviy > Services IP*** section
     
     ![13.png](images/13.png)
     
-3. In MobaXterm click on *Tunneling > New SSH tunnel > Remote Port Forwarding* and configure the following tunnel:
+3. In MobaXterm click on ***Tunneling > New SSH tunnel > Remote Port Forwarding*** and configure the following tunnel:
     - `Forwarded port: 8888`
     - `SSH server: <Your Kali box address>.bf.run`
     - `SSH login: kali`
@@ -164,11 +164,11 @@ At this point we have configured Burp and the device proxy. You can test it by b
 
 Finally, in order to install ad-hoc signed, fakesigned, or unsigned IPA app packages on the device we will need Appsync Unified to automatically sign the installed applications
 
-1. In the iOS device open the Cydia ************application and tap on *Sources > Edit > Add.* Type `https://cydia.akemi.ai`. Tap on ****************Add source.**************** Repeat the process if the Cydia ************application throws a ****************Request timeout**************** error
+1. In the iOS device open the Cydia application and tap on ***Sources > Edit > Add***. Type `https://cydia.akemi.ai`. Tap on ***Add source*** Repeat the process if the Cydia application throws a ***Request timeout*** error
     
     ![15.png](images/15.png)
     
-2. Tap on ****************Return to cydia**************** and then go to *Search* and type *******Appsync Unified.******* Choose *****Appsync Unified > Install > Confirm > Restart SpringBoard*****
+2. Tap on ***Return to cydia*** and then go to ***Search*** and type ***Appsync Unified***. Choose ***Appsync Unified > Install > Confirm > Restart SpringBoard***
     
     ![16.png](images/16.png)
     
@@ -194,13 +194,13 @@ In this setup option we will have three main components: the Corellium instance,
 Corellium will take a few minutes to complete the creation of the new device. Meanwhile we can start configuring our proxy
 
 1. Create/open a typical Burp project
-2. Create new proxy listener for the iOS device. In the Burp *Proxy* tab click on *Proxy Settings > Proxy Listeners > Add* and add the following listener:
+2. Create new proxy listener for the iOS device. In the Burp ***Proxy*** tab click on ***Proxy Settings > Proxy Listeners > Add*** and add the following listener:
     - `Bind port: 8082`
     - Mark the `All interfaces` check box
     
     ![2.png](images/2.png)
     
-3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp *Settings* window click on *Network > Connections > SOCKS proxy* and add the following proxy:
+3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp ***Settings*** window click on ***Network > Connections > SOCKS proxy*** and add the following proxy:
     - `SOCKS proxy host: 127.0.0.1`
     - `SOCKS proxy port: 9090`
     - Mark the `Use SOCKS proxy` check box
@@ -243,11 +243,11 @@ Corellium will take a few minutes to complete the creation of the new device. Me
     debug1: Remote: /home/kali/.ssh/authorized_keys:2: key options: agent-forwarding port-forwarding pty user-rc x11-forwarding
     ```
     
-5. Once the iOS device is created and running. Go to the Corellium ********Connect******** section and download the *****OVPN file*****
+5. Once the iOS device is created and running. Go to the Corellium ***Connect*** section and download the ***OVPN file***
     
     ![4.png](images/4.png)
     
-6. Import the *****OVPN file***** in OpenVPN and connect to the Corellium VPN profile
+6. Import the ***OVPN file*** in OpenVPN and connect to the Corellium VPN profile
     
     ![5.png](images/5.png)
     
@@ -279,7 +279,7 @@ Corellium will take a few minutes to complete the creation of the new device. Me
     ```
     
 
-1. In the iOS device go to ********************Settings > Wi-Fi >******************** tap on **i** icon of the Corellium network ***********> Configure > Proxy > Manual*********** and set the following parameters:
+1. In the iOS device go to ***Settings > Wi-Fi >*** tap on ***i*** icon of the Corellium network ***> Configure > Proxy > Manual*** and set the following parameters:
     - `Server: <IP address obtained in step 9>`
     - `Port: 8082`
     
@@ -287,28 +287,28 @@ Corellium will take a few minutes to complete the creation of the new device. Me
     
     ![8.png](images/8.png)
     
-2. Open the Safari browser in the iOS device and go to `http://burp`. Then tap on **********************CA Certificate > Allow**********************
+2. Open the Safari browser in the iOS device and go to `http://burp`. Then tap on ***CA Certificate > Allow***
     
     ![9.png](images/9.png)
     
-3. Go to ********************************************************************************Settings > Profile Downloaded > PortSwigger CA > Install > Install > Install > Done********************************************************************************
+3. Go to ***Settings > Profile Downloaded > PortSwigger CA > Install > Install > Install > Done***
     
     ![10.png](images/10.png)
     
-4. Go to *Settings > General > About > Certificate Trust Settings > Enable PortSwiggerCA*. Now, the iOS device has internet access and the proxy configured
+4. Go to ***Settings > General > About > Certificate Trust Settings > Enable PortSwiggerCA***. Now, the iOS device has internet access and the proxy configured
     
     ![11.png](images/11.png)
     
 
 At this point we have configured Burp and the device proxy. You can test it by browsing `wikipedia.org` in Safari and intercepting the traffic in Burp. Now we have to configure Frida and the Kali box. By default, a Frida server is running in the port 27042 of the iOS device. However, we need to create a port forwarding entry in the Corellium’s console to enable network access.
 
-1. In Corellium go to *Port Forwarding > Add Port* and create the following entry:
+1. In Corellium go to ***Port Forwarding > Add Port*** and create the following entry:
     - `Device port: 27042`
     - `Router port: 27042`
     
     ![12.png](images/12.png)
     
-2. Grab the IP address of your iOS device in the Corellium ***************Connect > IP Connectiviy > Services IP*************** section
+2. Grab the IP address of your iOS device in the Corellium ***Connect > IP Connectiviy > Services IP*** section
     
     ![13.png](images/13.png)
     
@@ -356,11 +356,11 @@ At this point we have configured Burp and the device proxy. You can test it by b
 
 Finally, in order to install ad-hoc signed, fakesigned, or unsigned IPA app packages on the device we will need Appsync Unified to automatically sign the installed applications
 
-1. In the iOS device open the Cydia ************application and tap on *Sources > Edit > Add.* Type `https://cydia.akemi.ai`. Tap on ****************Add source.**************** Repeat the process if the Cydia ************application throws a ****************Request timeout**************** error
+1. In the iOS device open the Cydia application and tap on ***Sources > Edit > Add***. Type `https://cydia.akemi.ai`. Tap on ***Add source***. Repeat the process if the Cydia application throws a ***Request timeout*** error
     
     ![15.png](images/15.png)
     
-2. Tap on ****************Return to cydia**************** and then go to *Search* and type *******Appsync Unified.******* Choose *****Appsync Unified > Install > Confirm > Restart SpringBoard*****
+2. Tap on ***Return to cydia*** and then go to ***Search*** and type ***Appsync Unified***. Choose ***Appsync Unified > Install > Confirm > Restart SpringBoard***
     
     ![16.png](images/16.png)
     
@@ -379,7 +379,7 @@ Two SSH tunnels between our Windows host and the Kali box will be needed; one fo
 
 ### Configuration Steps
 
-1. Open Genymotion and click on the ****+**** button to create a new virtual device. Select a device model of your choice (Samsung Galaxy S10 recommended), click on **********NEXT**********, name your device and select the Android API version according to your project requirements (i.e. minimum Android API version supported by the target application). Click ****Next**** several times and then click *******Install*******
+1. Open Genymotion and click on the ***+*** button to create a new virtual device. Select a device model of your choice (Samsung Galaxy S10 recommended), click on ***NEXT***, name your device and select the Android API version according to your project requirements (i.e. minimum Android API version supported by the target application). Click ***Next*** several times and then click ***Install***
     
     ![6.png](images/6%201.png)
     
@@ -387,20 +387,20 @@ Two SSH tunnels between our Windows host and the Kali box will be needed; one fo
 While the virtual device is being created we can start configuring our proxy
 
 1. Create/open a typical Burp project
-2. Create new proxy listener for the iOS device. In the Burp *Proxy* tab click on *Proxy Settings > Proxy Listeners > Add* and add the following listener:
+2. Create new proxy listener for the iOS device. In the Burp ***Proxy*** tab click on ***Proxy Settings > Proxy Listeners > Add*** and add the following listener:
     - `Bind port: 8082`
     - Mark the `All interfaces` check box
     
     ![2.png](images/2.png)
     
-3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp *Settings* window click on *Network > Connections > SOCKS proxy* and add the following proxy:
+3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp ***Settings*** window click on ***Network > Connections > SOCKS proxy*** and add the following proxy:
     - `SOCKS proxy host: 127.0.0.1`
     - `SOCKS proxy port: 9090`
     - Mark the `Use SOCKS proxy` check box
     
     ![2.png](images/2%201.png)
     
-4. Open MobaXterm and create a new SSH tunnel for the Burp traffic in the Kali box. Click on *Tunneling > New SSH tunnel > Dynamic Port Forwarding (SOCKS Proxy)* and set the following parameters:
+4. Open MobaXterm and create a new SSH tunnel for the Burp traffic in the Kali box. Click on ***Tunneling > New SSH tunnel > Dynamic Port Forwarding (SOCKS Proxy)*** and set the following parameters:
     - `Forwarded port: 9090`
     - `SSH server: <Your Kali box address>.bf.run`
     - `SSH login: kali`
@@ -410,7 +410,7 @@ While the virtual device is being created we can start configuring our proxy
     
 5. Save and start the tunnel
 6. Start the new Android device when the creation process is finished
-7. In Burp, go to the Burp *Proxy* tab and click on *Proxy Settings.* Then click on *********************************************************************Import /export CA certificate > Export > Certificate in DER format >********************************************************************* Choose a path and name it anything with a *****.cer***** extension (for example `cacert.cer`) > click on ****Next****
+7. In Burp, go to the Burp ***Proxy*** tab and click on ***Proxy Settings***. Then click on ***Import /export CA certificate > Export > Certificate in DER format >*** Choose a path and name it anything with a ***.cer*** extension (for example `cacert.cer`) > click on ***Next***
     
     ![8.png](images/8%201.png)
     
@@ -443,7 +443,7 @@ While the virtual device is being created we can start configuring our proxy
     ```
     
 13. Reboot the Android device
-14. After the device reboots go to ******************************************Settings > Security > Trusted Credentials****************************************** and verify that the *Portswigger CA* is installed as a system trusted CA
+14. After the device reboots go to ***Settings > Security > Trusted Credentials*** and verify that the ***Portswigger CA*** is installed as a system trusted CA
     
     ![9.png](images/9%201.png)
     
@@ -490,7 +490,7 @@ At this point we have configured Burp and the device proxy. You can test it by b
     vbox86p:/ # ./frida-server-16.1.1-android-x86 -l 0.0.0.0:9999 &
     ```
     
-5. Get the IP address of your virtual device with the following command. Generally, the *****eth0***** interface is the one that we need:
+5. Get the IP address of your virtual device with the following command. Generally, the `eth0` interface is the one that we need:
     
     ```bash
     vbox86p:/ # ifconfig
@@ -505,7 +505,7 @@ At this point we have configured Burp and the device proxy. You can test it by b
               RX bytes:54313445 TX bytes:19129794
     ```
     
-6. In MobaXterm click on *Tunneling > New SSH tunnel > Remote Port Forwarding* and configure the following tunnel:
+6. In MobaXterm click on ***Tunneling > New SSH tunnel > Remote Port Forwarding*** and configure the following tunnel:
     - `Forwarded port: 8888`
     - `SSH server: <Your Kali box address>.bf.run`
     - `SSH login: kali`
@@ -570,7 +570,7 @@ If the target application is only available for ARM architecture we will need to
     
     ![3.png](images/3%201.png)
     
-3. Tap on **OK**
+3. Tap on ***OK***
     
     ![4.png](images/4%201.png)
     
@@ -580,11 +580,11 @@ Another useful feature in Genymotion is OpenGAPPs to enable the Google services 
 
 >💡 **Note:** OpenGAPPs must be installed after the ARM translation tools
 
-1. In the Genymotion device window click on the *********OpenGAPPs********* button
+1. In the Genymotion device window click on the ***OpenGAPPs*** button
     
     ![5.png](images/5%201.png)
     
-2. Click on *******Accept > Restart now*******
+2. Click on ***Accept > Restart now***
 
 The Play Store application will be available
 
@@ -604,7 +604,7 @@ In this setup option we will have three main components: our local Windows host,
 
 ### Configuration Steps
 
-1. Open Genymotion and click on the ****+**** button to create a new virtual device. Select a device model of your choice (Samsung Galaxy S10 recommended), click on **********NEXT**********, name your device and select the Android API version according to your project requirements (i.e. minimum Android API version supported by the target application). Click ****Next**** several times and then click *******Install*******
+1. Open Genymotion and click on the ***+*** button to create a new virtual device. Select a device model of your choice (Samsung Galaxy S10 recommended), click on ***NEXT***, name your device and select the Android API version according to your project requirements (i.e. minimum Android API version supported by the target application). Click ***Next*** several times and then click ***Install***
     
     ![6.png](images/6%201.png)
     
@@ -612,13 +612,13 @@ In this setup option we will have three main components: our local Windows host,
 While the virtual device is being created we can start configuring our proxy
 
 1. Create/open a typical Burp project
-2. Create new proxy listener for the iOS device. In the Burp *Proxy* tab click on *Proxy Settings > Proxy Listeners > Add* and add the following listener:
+2. Create new proxy listener for the iOS device. In the Burp ***Proxy*** tab click on ***Proxy Settings > Proxy Listeners > Add*** and add the following listener:
     - `Bind port: 8082`
     - Mark the `All interfaces` check box
     
     ![2.png](images/2.png)
     
-3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp *Settings* window click on *Network > Connections > SOCKS proxy* and add the following proxy:
+3. Since the client has to be able to identify our network traffic, we have to route the Burp traffic to the application’s backend through the Kali box. In the Burp ***Settings*** window click on ***Network > Connections > SOCKS proxy*** and add the following proxy:
     - `SOCKS proxy host: 127.0.0.1`
     - `SOCKS proxy port: 9090`
     - Mark the `Use SOCKS proxy` check box
@@ -662,7 +662,7 @@ While the virtual device is being created we can start configuring our proxy
     ```
     
 5. Start the new Android device when the creation process is finished
-6. In Burp, go to the Burp *Proxy* tab and click on *Proxy Settings.* Then click on *********************************************************************Import /export CA certificate > Export > Certificate in DER format >********************************************************************* Choose a path and name it anything with a *****.cer***** extension (for example `cacert.cer`) > click on ****Next****
+6. In Burp, go to the Burp **Proxy** tab and click on ***Proxy Settings***. Then click on ***Import /export CA certificate > Export > Certificate in DER format >*** Choose a path and name it anything with a ***.cer*** extension (for example `cacert.cer`) > click on ***Next***
     
     ![8.png](images/8%201.png)
     
@@ -717,7 +717,7 @@ While the virtual device is being created we can start configuring our proxy
     ```
     
 13. Reboot the Android device
-14. After the device reboots go to ******************************************Settings > Security > Trusted Credentials****************************************** and verify that the *Portswigger CA* is installed as a system trusted CA
+14. After the device reboots go to ***Settings > Security > Trusted Credentials*** and verify that the ***Portswigger CA*** is installed as a system trusted CA
     
     ![9.png](images/9%201.png)
     
@@ -787,7 +787,7 @@ At this point we have configured Burp and the device proxy. You can test it by b
     vbox86p:/ # ./frida-server-16.1.1-android-x86 -l 0.0.0.0:9999 &
     ```
     
-5. Get the IP address of your virtual device and exit with the following commands. Generally, the *****eth0***** interface is the one that we need:
+5. Get the IP address of your virtual device and exit with the following commands. Generally, the `eth0` interface is the one that we need:
     
     ```bash
     vbox86p:/ # ifconfig
@@ -857,7 +857,7 @@ If the target application is only available for ARM architecture we will need to
     
     ![3.png](images/3%201.png)
     
-3. Tap on **OK**
+3. Tap on ***OK***
     
     ![4.png](images/4%201.png)
     
@@ -867,10 +867,10 @@ Another useful feature in Genymotion is OpenGAPPs to enable the Google services 
 
 >💡 **Note:** OpenGAPPs must be installed after the ARM translation tools
 
-1. In the Genymotion device window click on the *********OpenGAPPs********* button
+1. In the Genymotion device window click on the ***OpenGAPPs*** button
     
     ![5.png](images/5%201.png)
     
-2. Click on *******Accept > Restart now*******
+2. Click on ***Accept > Restart now***
 
 The Play Store application will be available
