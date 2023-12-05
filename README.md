@@ -712,7 +712,7 @@ While the virtual device is being created we can start configuring our proxy
     
     ```bash
     $ adb remount
-    $ adb 9a5ba575.0 /system/etc/security/cacerts/
+    $ adb push 9a5ba575.0 /system/etc/security/cacerts/
     $ adb shell "chmod 644 /system/etc/security/cacerts/9a5ba575.0"
     ```
     
